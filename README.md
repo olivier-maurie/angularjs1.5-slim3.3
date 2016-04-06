@@ -1,18 +1,20 @@
-# Slim Framework 3 Skeleton Application
+# Simple CRUD angularjs/slim
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+## Needs
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+nodeJS
+Composer
+npm
 
-## Install the Application
+## Install the application
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+### App folder
+Create your folder and execute in cmd
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+`yo angular`
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+Just say no for the first question, to use grunt instead of gulp.
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
+### Api folder
 
-That's it! Now go build something cool.
+https://github.com/slimphp/Slim-Skeleton
