@@ -1,0 +1,43 @@
+<div class="container-fluid">
+	<div class="row">
+<!-- 		<div ng-include="'/views/admin/header.html'"></div> -->
+		<div class="col-sm-9 col-lg-10">
+			<h2 class="text-center">Articles</h2>
+			
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-10 col-sm-8 col-xs-8">
+						<fieldset>
+							<legend>Edition d'un article</legend>
+							<form action="" method="PUT" ng-submit="editArticle()">
+								<div class="form-groupe">
+									<label for="">Titre</label>
+									<input class="form-control" type="text" ng-model="title" value="Titre" ng-required="required"/>
+								</div>
+								<div class="form-groupe">
+									<label for="">Tag</label>
+									<input class="form-control" type="number" ng-model="tag" ng-required="required"/>
+								</div>
+								<div class="form-groupe">
+									<label for="">Contenu</label>
+									<textarea class="form-control" ng-model="contenu"  ng-required="required"></textarea>
+								</div>
+								
+								<button type="submit" class="btn btn-default">Valider</button>
+							</form>
+						</fieldset>
+					</div>
+					<div class="col-lg-2 col-sm-4 col-xs-4">
+						<fieldset>
+							<legend>Légende tag</legend>
+							<ul>
+								<li ng-repeat="tag in tags">{{tag.id + " " + tag.tag}}</li>
+							</ul>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
