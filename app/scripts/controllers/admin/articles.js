@@ -8,16 +8,23 @@
  * Controller of the lavifrfrApp
  */
 angular.module('blog2App')
-	.controller('ArticlesCtrl', function($http, $scope, articleService, $location){
-		$http({
-			method: "GET",
-			url: 'http://127.0.0.1:8080/public/articles'
-		})
-		.then(function(response) {
-			$scope.articles = response.data;
-			$scope.maxText = 200;
-			return $scope.articles;
-		});
+	.controller('ArticlesCtrl', function($http, $scope, articleService, articleFactory, $location){
+		//$scope.maxText = 200;
+		$scope.articles = articleFactory.query();
+
+		console.log($scope.articles);
+
+
+
+		// $http({
+		// 	method: "GET",
+		// 	url: 'http://127.0.0.1:8080/public/articles'
+		// })
+		// .then(function(response) {
+		// 	$scope.articles = response.data;
+			
+		// 	return $scope.articles;
+		// });
 
 		$http({
 			method: "GET",

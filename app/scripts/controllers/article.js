@@ -8,14 +8,12 @@
  * Controller of the blog2App
  */
 angular.module('blog2App')
-  .controller('articleCtrl', function ($http, $scope, $routeParams) {
-    var paramId = $routeParams.id;
-		$http({
-			method: 'GET',
-			url: 'http://127.0.0.1:8080/public/article/' + paramId + '/get'
-		})
-		.success(function(response){
-			document.title = response[0].title + ' | LaviFR';
-			$scope.article = response[0];
-		});
+  .controller('articleCtrl', function ($scope, $routeParams, articleFactory) {
+
+  	var paramId = $routeParams.id;
+
+  	articleFactory.get({id: paramId}).$promise.then(function(data){
+  		$scope.article = data[0];
+  	});
+
   });

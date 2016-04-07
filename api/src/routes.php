@@ -12,7 +12,7 @@ $app->get('/articles', function(){
 	} catch(PDOException $e) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}});
-$app->post('/article', function ($request, $response, $args) use ($app){
+$app->post('/articles', function ($request, $response, $args) use ($app){
 	$article = json_decode($request->getBody());
 	$sql = "INSERT INTO articles (title, contenu, tag) VALUES (:title, :contenu, :tag)";
 	try {
@@ -28,8 +28,8 @@ $app->post('/article', function ($request, $response, $args) use ($app){
 	} catch(PDOException $e) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}});
-$app->group('/article/{id}', function(){
-	$this->get('/get', function($request, $response, $args) {
+$app->group('/articles/{id}', function(){
+	$this->get('', function($request, $response, $args) {
 		$sql = "SELECT a.id, a.contenu, a.title, ta.tag FROM articles a LEFT JOIN tag_article ta ON a.tag = ta.id WHERE a.id = ".$args['id'];
 		try {
 			$db = getConnection();
@@ -40,7 +40,7 @@ $app->group('/article/{id}', function(){
 		} catch(PDOException $e) {
 			echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 		}});
-	$this->put('/edit', function($request, $response, $args){
+	$this->put('', function($request, $response, $args){
 		$article = json_decode($request->getBody());
 		$sql = "UPDATE articles 
 				SET title=:title, contenu=:contenu, tag=:tag
@@ -57,7 +57,7 @@ $app->group('/article/{id}', function(){
 		} catch(PDOException $e) {
 			echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 		}});
-	$this->delete('/delete', function($request, $response, $args){
+	$this->delete('', function($request, $response, $args){
 			$sql = "DELETE FROM articles WHERE id=".$args['id'];
 			try {
 				$db = getConnection();
