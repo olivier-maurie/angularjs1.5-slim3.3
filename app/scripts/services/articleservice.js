@@ -10,30 +10,6 @@
 angular.module('blog2App')
   .service('articleService', function ($http, $routeParams){
 	var paramId = $routeParams.id;
-
-	this.editArticleFunc = function(title, contenu, tag){
-		var article = {
-				'title': title,
-				'contenu': contenu,
-				'tag': tag
-			};
-		return $http({
-			method: 'PUT',
-			url: 'http://127.0.0.1:8080/public/article/' + paramId + '/edit',
-			headers: {
-				'Content-Type': 'text/plain'
-			},
-			dataType: 'json',
-			data: article
-		})
-		.success(function(response){
-			console.log('ok');
-			return response;
-		})
-		.error(function(response){
-			return response;
-		});
-	};
 		
 	this.addArticleFunc = function(title, contenu, tag){
 		var article = {
@@ -49,6 +25,29 @@ angular.module('blog2App')
 			},
 			dataType: 'json',
 			data: JSON.stringify(article)
+		})
+		.success(function(response){
+			return response;
+		})
+		.error(function(response){
+			return response;
+		});
+	};
+
+	  this.editArticleFunc = function(title, contenu, tag){
+		var article = {
+				'title': title,
+				'contenu': contenu,
+				'tag': tag
+			};
+		return $http({
+			method: 'PUT',
+			url: 'http://127.0.0.1:8080/public/article/' + paramId + '/edit',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			dataType: 'json',
+			data: article
 		})
 		.success(function(response){
 			return response;

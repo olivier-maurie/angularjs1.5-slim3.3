@@ -8,7 +8,7 @@
  * Controller of the lavifrfrApp
  */
 angular.module('blog2App')
-	.controller('EditArticleCtrl', function($scope, $http, articleService){
+	.controller('EditArticleCtrl', function($scope, $http, $location, editArticleService){
 	document.title = "Edition"
 
 	$http({
@@ -19,15 +19,11 @@ angular.module('blog2App')
 		$scope.tags = response.data;
 	});
 
-	console.log('ok');
-
 	$scope.editArticle = function(response){
-		articleService.editArticleFunc($scope.title, $scope.contenu, $scope.tag)
+		editArticleService.editArticleFunc($scope.title, $scope.contenu, $scope.tag)
 		.success(function(response){
-			console.log(response);
-			console.log('ok');
-			alert('Modification enregistré');
-		});
+			location.reload();
+		})
+		$location.path('/admin/articles');
 	};
-
 });
