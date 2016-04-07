@@ -45,9 +45,9 @@ angular
         controllerAs: 'editarticle'
       })
       .when('/admin/articles/delete/:id', {
-        templateUrl: 'views/admin/articles.html',
-        controller: 'ArticlesCtrl',
-        controllerAs: 'articles'
+        templateUrl: 'views/admin/deletearticle.html',
+        controller: 'DeleteArticleCtrl',
+        controllerAs: 'deletearticle'
       })
       .otherwise({
         redirectTo: '/'

@@ -8,7 +8,7 @@
  * Controller of the lavifrfrApp
  */
 angular.module('blog2App')
-	.controller('ArticlesCtrl', function($http, $scope,$routeParams, articleService, $location){
+	.controller('ArticlesCtrl', function($http, $scope, articleService, $location){
 		$http({
 			method: "GET",
 			url: 'http://127.0.0.1:8080/public/articles'
@@ -16,6 +16,7 @@ angular.module('blog2App')
 		.then(function(response) {
 			$scope.articles = response.data;
 			$scope.maxText = 200;
+			return $scope.articles;
 		});
 
 		$http({
@@ -33,11 +34,4 @@ angular.module('blog2App')
 			})
 		};
 
-		var paramId = $routeParams.id;
-
-		$http.delete('http://127.0.0.1:8080/public/article/' + paramId + '/delete')
-		.then(function(response){
-			location.reload();
-		});
-		
 	});

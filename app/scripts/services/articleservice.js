@@ -13,7 +13,6 @@ angular.module('blog2App')
 
 	this.editArticleFunc = function(title, contenu, tag){
 		var article = {
-				'id': paramId,
 				'title': title,
 				'contenu': contenu,
 				'tag': tag
@@ -22,12 +21,13 @@ angular.module('blog2App')
 			method: 'PUT',
 			url: 'http://127.0.0.1:8080/public/article/' + paramId + '/edit',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'text/plain'
 			},
 			dataType: 'json',
-			data: JSON.stringify(article)
+			data: article
 		})
 		.success(function(response){
+			console.log('ok');
 			return response;
 		})
 		.error(function(response){
@@ -36,7 +36,8 @@ angular.module('blog2App')
 	};
 		
 	this.addArticleFunc = function(title, contenu, tag){
-		var article = {'title': title,
+		var article = {
+				'title': title,
 				'contenu': contenu,
 				'tag': tag
 			};
