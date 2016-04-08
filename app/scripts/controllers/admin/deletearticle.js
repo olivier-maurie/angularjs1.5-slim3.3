@@ -8,12 +8,11 @@
  * Service in the lavifrfrApp.
  */
 angular.module('blog2App')
-  .controller('DeleteArticleCtrl', function ($http, $location, $routeParams){
+  .controller('DeleteArticleCtrl', function ($http, $location, $routeParams, articleFactory){
   	var paramId = $routeParams.id;
 
-	$http.delete('http://127.0.0.1:8080/public/article/'+paramId+'/delete')
-	.then(function(response){
-	});
-	location.reload();
+  	articleFactory.delete({id: paramId});
+  	location.reload();
 	$location.path('/admin/articles/');
+
   });

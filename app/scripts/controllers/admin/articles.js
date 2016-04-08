@@ -8,24 +8,15 @@
  * Controller of the lavifrfrApp
  */
 angular.module('blog2App')
-	.controller('ArticlesCtrl', function($http, $scope, articleService, articleFactory, $location){
-		//$scope.maxText = 200;
-		$scope.articles = articleFactory.query();
+	.controller('ArticlesCtrl', function($http, $scope, $location, articleFactory){
+		
+		// liste d'articles
+		$scope.maxText = 200;
+		articleFactory.query().$promise.then(function(data){
+			$scope.articles = data;
+		});
 
-		console.log($scope.articles);
-
-
-
-		// $http({
-		// 	method: "GET",
-		// 	url: 'http://127.0.0.1:8080/public/articles'
-		// })
-		// .then(function(response) {
-		// 	$scope.articles = response.data;
-			
-		// 	return $scope.articles;
-		// });
-
+		// liste des tags
 		$http({
 			method: "GET",
 			url: "http://127.0.0.1:8080/public/tags"
@@ -34,11 +25,12 @@ angular.module('blog2App')
 			$scope.tags = response.data
 		});
 
+		// ajout d'article
+		$scope.articleData = {};
 		$scope.addArticle = function(){
-			articleService.addArticleFunc($scope.title, $scope.contenu, $scope.tag)
-			.then(function(response){
-				location.reload();
-			})
-		};
+			var article = new articleFactory($scope.articleData);
+			article.$save();
+			location.reload();
+		}
 
 	});

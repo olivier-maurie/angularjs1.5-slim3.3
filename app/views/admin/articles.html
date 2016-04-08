@@ -11,11 +11,11 @@
 							<form method="POST" ng-submit="addArticle()">
 								<div class="form-group">
 									<label for="titre">Titre</label>
-									<input type="text" class="form-control" placeholder="Titre" ng-model="title"/>
+									<input type="text" class="form-control" placeholder="Titre" ng-model="articleData.title"/>
 								</div>
 								<div class="form-group">
 									<label for="">Tag</label>
-									<input type="number" class="form-control" placeholder="Tag" ng-model="tag"/>
+									<input type="number" class="form-control" placeholder="Tag" ng-model="articleData.tag"/>
 								</div>
 							<!-- 	<div class="form-group">
 									<label for="">Image</label>
@@ -23,7 +23,7 @@
 								</div> -->
 								<div class="form-group">
 									<label for="">Contenu</label>
-									<textarea placeholder="Contenu" class="form-control" ng-model="contenu"></textarea>
+									<textarea placeholder="Contenu" class="form-control" ng-model="articleData.contenu"></textarea>
 								</div>
 								
 								<button type="submit" class="btn btn-default">Valider</button>

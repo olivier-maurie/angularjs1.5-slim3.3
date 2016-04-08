@@ -81,7 +81,7 @@ $app->get('/tags', function(){
 	} catch(PDOException $e) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}});
-$app->post('/tag', function($request, $response, $args){
+$app->post('/tags', function($request, $response, $args){
 	$tag = json_decode($request->getBody());
 	$sql = "INSERT INTO tag_article (tag) VALUES (:tag)";
 	try {
@@ -95,8 +95,8 @@ $app->post('/tag', function($request, $response, $args){
 	} catch(PDOException $e) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}});
-$app->group('/tag/{id}', function(){
-	$this->put('/edit', function($request, $response, $args){
+$app->group('/tags/{id}', function(){
+	$this->put('', function($request, $response, $args){
 		$tag = json_decode($request->getBody());
 		$sql = "UPDATE tag_article 
 				SET tag=:tag
@@ -111,7 +111,7 @@ $app->group('/tag/{id}', function(){
 		} catch(PDOException $e) {
 			echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 		}});
-	$this->delete('/delete', function($request, $response, $args){
+	$this->delete('', function($request, $response, $args){
 			$sql = "DELETE FROM tag_article WHERE id=".$args['id'];
 			try {
 				$db = getConnection();

@@ -8,8 +8,9 @@
  * Controller of the lavifrfrApp
  */
 angular.module('blog2App')
-	.controller('EditArticleCtrl', function($scope, $http, $location, editArticleService){
-	document.title = "Edition"
+	.controller('EditArticleCtrl', function($scope, $http, $location, $routeParams, articleFactory){
+	document.title = "Edition";
+	var paramId = $routeParams.id;
 
 	$http({
 		method: "GET",
@@ -19,11 +20,12 @@ angular.module('blog2App')
 		$scope.tags = response.data;
 	});
 
-	$scope.editArticle = function(response){
-		editArticleService.editArticleFunc($scope.title, $scope.contenu, $scope.tag)
-		.success(function(response){
-			location.reload();
-		})
+	$scope.articleData = {};
+
+	$scope.editArticle = function(){
+		var article = new articleFactory($scope.articleData);
+		article.$update({id: paramId});
+		location.reload();
 		$location.path('/admin/articles');
 	};
 });

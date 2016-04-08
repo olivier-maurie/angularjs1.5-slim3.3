@@ -10,6 +10,8 @@
 angular.module('blog2App')
   .controller('MainCtrl', function ($scope, articleFactory) {
 
-  	$scope.articles = articleFactory.query();
+  	articleFactory.query().$promise.then(function(data){
+			$scope.articles = data;
+		});
 
   });

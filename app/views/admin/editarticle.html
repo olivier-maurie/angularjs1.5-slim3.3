@@ -12,15 +12,15 @@
 							<form action="" method="PUT" ng-submit="editArticle()">
 								<div class="form-groupe">
 									<label for="">Titre</label>
-									<input class="form-control" type="text" ng-model="title" value="Titre" ng-required="required"/>
+									<input class="form-control" type="text" ng-model="articleData.title" value="Titre" ng-required="required"/>
 								</div>
 								<div class="form-groupe">
 									<label for="">Tag</label>
-									<input class="form-control" type="number" ng-model="tag" ng-required="required"/>
+									<input class="form-control" type="number" ng-model="articleData.tag" ng-required="required"/>
 								</div>
 								<div class="form-groupe">
 									<label for="">Contenu</label>
-									<textarea class="form-control" ng-model="contenu"  ng-required="required"></textarea>
+									<textarea class="form-control" ng-model="articleData.contenu"  ng-required="required"></textarea>
 								</div>
 								
 								<button type="submit" class="btn btn-default">Valider</button>
